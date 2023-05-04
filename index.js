@@ -33,7 +33,6 @@ client.slashcommandsarr = new Collection();
     }
     
     client.eventhandler(eventFiles, "./src/events");
-    client.commandhandler(commandFolders, `./src/commands`);
     client.slashcommandhandler(slashcommandFolders, './src/SlashCommands')
     client.login(config.token);
        
