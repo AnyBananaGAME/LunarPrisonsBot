@@ -28,7 +28,7 @@ client.slashcommandsarr = new Collection();
 (async() => {
         try {
             for (const file of handlers) {
-                require(`./src/handlers/${file}`)(client);
+                require(`./src/Handlers/${file}`)(client);
                 console.log(`${chalk.gray("[")}${chalk.red("!")}${chalk.gray("]")} ${chalk.blueBright(`Loading Handler ${file}`)}`)
     }
     
