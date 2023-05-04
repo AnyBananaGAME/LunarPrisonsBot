@@ -17,7 +17,7 @@ const client = new Client({
 
 const handlers = readdirSync("./src/Handlers").filter(file => file.endsWith('.js'));
 const eventFiles = readdirSync("./src/Events").filter(file => file.endsWith('.js'));
-const commandFolders = readdirSync("./src/Commands")
+// const commandFolders = readdirSync("./src/Commands")
 const slashcommandFolders = readdirSync("./src/SlashCommands")
 
 
