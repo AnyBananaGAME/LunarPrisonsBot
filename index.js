@@ -14,7 +14,7 @@ const client = new Client({
     ],
     partials: [Partials.Channel],
 });
-
+console.log(readdirSync)
 const handlers = readdirSync("./src/Handlers").filter(file => file.endsWith('.js'));
 const eventFiles = readdirSync("./src/Events").filter(file => file.endsWith('.js'));
 // const commandFolders = readdirSync("./src/Commands")
