@@ -7,11 +7,11 @@ module.exports = (client) => {
         const commands = []
 
         for (folder of slashcommandFolders) {
-            const slashcommandFiles = readdirSync(`./src/Slashcommands/${folder}`).filter(file => file.endsWith('.js'));
+            const slashcommandFiles = readdirSync(`./src/SlashCommands/${folder}`).filter(file => file.endsWith('.js'));
 
 
             for (const file of slashcommandFiles) {
-                const slashcommand = require(`../slashcommands/${folder}/${file}`)
+                const slashcommand = require(`../SlashCommands/${folder}/${file}`)
 
                 if ('data' in slashcommand && 'execute' in slashcommand) {
                     commands.push(slashcommand.data.toJSON());
