@@ -9,14 +9,14 @@ module.exports = {
             if (interaction.customId == "verify") {
                 let roleID = "1100347672591880202"
                 if (interaction.member.roles.cache.has("1100335742238085132")) {
+                    interaction.member.roles.remove("1100335742238085132")
                     interaction.member.roles.add(roleID)
                     interaction.reply({ content: "You have verified succesfully!", ephemeral: true })
-                    interaction.member.roles.remove("1100335742238085132")
                 } else {
                     interaction.reply({ content: "You are already verified!", ephemeral: true })
                 }
             }
-            if (interaction.customId == "ticket-open") {
+            if (interaction.customId == "ticket-openn") {
                 if (interaction.guild.channels.cache.find(
                     (channel) => channel.topic === `${interaction.user.id}`
                 )) {
@@ -55,7 +55,7 @@ module.exports = {
                         let TicketEmbed = new EmbedBuilder()
                             .setColor("Blurple")
                             .setDescription(`
-                        Hello ${interaction.user}!\n\nWelcome to your ticket, and please be patient someone will be with you shortly!
+                       If you have any concerns related to the server. Create a ticket, a staff member will be with you shortly.
                       `)
                         let button1 = new ButtonBuilder()
                             .setCustomId("ticket-close")
