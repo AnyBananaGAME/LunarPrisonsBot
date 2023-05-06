@@ -34,6 +34,24 @@ module.exports = {
             interaction.channel.send({ embeds: [VerifyEmbed], components: [row] });
             interaction.reply({ content: "Embed succesfully sent!", ephemeral: true })
         }
+        if (opt === "ticket") {
+            let TicketEmbed = new EmbedBuilder()
+                .setDescription(
+                    "Hey there!\n\nIf you are here to create a ticket click the button below!\nWe will help you out :D\nDon't make false ticket's it may result in a blacklist"
+                    )
+                .setColor("Blurple")
+
+            let button1 = new ButtonBuilder()
+                .setCustomId("ticket-open")
+                .setLabel("Create a ticket")
+                .setStyle("Success")
+            const row = new ActionRowBuilder().addComponents(button1
+
+            );
+            interaction.channel.send({ embeds: [TicketEmbed], components: [row] });
+            interaction.reply({ content: "Embed succesfully sent!", ephemeral: true })
+        }
+
 
     },
 };
