@@ -1,11 +1,23 @@
 const { exec } = require("child_process");
-
+let pkg = require("../../package.json")
 module.exports = {
     name: "ready",
     async execute(client) {
             (async () => {
                 console.log("Ready!")
                 setInterval(() => {
+                    exec("git clone "+pkg.repository, (error, stdout, stderr) => {
+                        if (error) {
+                            console.log(`error: ${error.message}`);
+                            return;
+                        }
+                        if (stderr) {
+                            console.log(`stderr: ${stderr}`);
+                            return;
+                        }
+                        console.log(`stdout: ${stdout}`);
+                    });
+                
                     exec("git add ./json.sqlite", (error, stdout, stderr) => {
                         if (error) {
                             console.log(`error: ${error.message}`);
