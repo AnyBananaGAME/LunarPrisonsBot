@@ -69,6 +69,29 @@ module.exports = {
 
             }
             if (interaction.customId == "ticket-close") {
+                interaction.channel.permissionOverwrites.set([
+                    {
+                        id: interaction.user.id,
+                        allow: [PermissionFlagsBits.ViewChannel],
+                    },
+                    {
+                        id: interaction.channel.topic,
+                        allow: [PermissionFlagsBits.SendMessages],
+                    },
+                    {
+                        id: interaction.guild.roles.everyone,
+                        deny: [PermissionFlagsBits.ViewChannel],
+                    },
+                    {
+                        id: "1040218657361494112",
+                        deny: [PermissionFlagsBits.ViewChannel],
+                    },
+                    {
+                        id: "1066632458700869652",
+                        allow: [PermissionFlagsBits.ViewChannel]
+                    }
+                ])
+
                 let embed = new EmbedBuilder()
                     .setDescription("Ticket closed by " + interaction.user.username)
                     .setColor("Blurple")
@@ -77,12 +100,46 @@ module.exports = {
                     .setCustomId("ticket-delete")
                     .setLabel("Delete the ticket")
                     .setStyle("Danger")
-                const row = new ActionRowBuilder().addComponents(button1)
+                let button2 = new ButtonBuilder()
+                    .setCustomId("ticket-reopen")
+                    .setLabel("Reopen the ticket")
+                    .setStyle("Success")
+                const row = new ActionRowBuilder().addComponents([button1, button2])
                 interaction.channel.permissionOverwrites.edit(interaction.channel.topic, PermissionFlagsBits.SendMessages)
 
     
                 interaction.channel.send({ embeds: [embed], components: [row] });
             }
+            if (interaction.customId == "ticket-reopen") {
+                let embed = new EmbedBuilder()
+                    .setDescription("Ticket opened by " + interaction.user.username)
+                    .setColor("Blurple")
+                interaction.channel.permissionOverwrites.set([
+                    {
+                        id: interaction.user.id,
+                        allow: [PermissionFlagsBits.SendMessages, PermissionFlagsBits.ViewChannel],
+                    },
+                    {
+                        id: interaction.guild.roles.everyone,
+                        deny: [PermissionFlagsBits.ViewChannel],
+                    },
+                    {
+                        id: "1040218657361494112",
+                        deny: [PermissionFlagsBits.ViewChannel],
+                    },
+                    {
+                        id: "1066632458700869652",
+                        allow: [PermissionFlagsBits.ViewChannel]
+                    }
+                ])
+
+    
+                interaction.channel.send({ embeds: [embed] });
+            }
+
+
+
+
             if (interaction.customId == "ticket-delete") {
                 const sleep = ms => new Promise((resolve) => setTimeout(resolve, ms))
                 if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
