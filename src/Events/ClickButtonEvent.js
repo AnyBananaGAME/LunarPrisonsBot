@@ -145,6 +145,7 @@ module.exports = {
 
 
             if (interaction.customId == "ticket-delete") {
+                      guild.members.fetch()
                 const sleep = ms => new Promise((resolve) => setTimeout(resolve, ms))
                 if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
                     return interaction.reply({ ephemeral: true, content: "You can not delete the ticket, only staff with Administrator permission can!!!" })
