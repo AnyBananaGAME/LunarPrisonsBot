@@ -151,10 +151,7 @@ module.exports = {
                 } else {
                     let embed2 = new EmbedBuilder()
                     .setDescription(`
-                    Ticket owner: \n
-                    > ping: ${client.users.cache.get(interaction.channel.topic)}\n
-                    > tag: ${client.users.cache.get(interaction.channel.topic).tag}\n
-                    > id: ${client.users.cache.get(interaction.channel.topic).id}\n
+                    Ticket owner ${client.users.cache.get(interaction.channel.topic)}\n
                     Ticket deleted by ${interaction.user.username}
                     Ticked deleted at <t:${Math.floor(Date.now()/1000)}:R>
                     `)
