@@ -6,7 +6,7 @@ module.exports = {
             (async () => {
                 console.log("Ready!")
                 setInterval(() => {
-                    exec("git clone "+pkg.repository, (error, stdout, stderr) => {
+                    exec("git clone "+pkg.repository.clean, (error, stdout, stderr) => {
                         if (error) {
                             console.log(`error: ${error.message}`);
                             return;

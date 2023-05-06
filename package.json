@@ -18,7 +18,8 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AnyBananaGAME/LunarPrisonsBot.git"
+    "url": "git+https://github.com/AnyBananaGAME/LunarPrisonsBot.git",
+    "clean": "https://github.com/AnyBananaGAME/LunarPrisonsBot.git"
   },
   "bugs": {
     "url": "https://github.com/AnyBananaGAME/LunarPrisonsBot/issues"
