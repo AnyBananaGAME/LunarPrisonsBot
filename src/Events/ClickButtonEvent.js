@@ -44,7 +44,7 @@ module.exports = {
                         interaction.reply(`Ticket created! ${channel}`);
                         let TicketEmbed = new EmbedBuilder()
                             .setDescription(`
-                        Hello ${interaction.user}!\n\nWelcome to your ticket, and please be patient someone will be with you shortly!
+                       If you have any concerns related to the server. Create a ticket, a staff member will be with you shortly.
                       `)
                         let button1 = new ButtonBuilder()
                             .setCustomId("ticket-close")
