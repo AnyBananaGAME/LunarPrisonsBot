@@ -35,14 +35,14 @@ module.exports = {
 
             let emb = new EmbedBuilder()
                 .setColor("Blurple")
-                .setDescription(config.ip)
+                .setDescription(`The IP is `+config.ip)
             interaction.reply({ content: member, embeds: [emb] })
         }
         if (opt === "vote") {
 
             let emb = new EmbedBuilder()
                 .setColor("Blurple")
-                .setDescription(config.votelink)
+                .setDescription(`Please make sure to vote as `+config.votelink)
             interaction.reply({ content: member, embeds: [emb] })
         }
         if (opt === "store") {
