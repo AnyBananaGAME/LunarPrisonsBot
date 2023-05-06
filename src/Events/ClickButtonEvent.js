@@ -16,7 +16,7 @@ module.exports = {
                     interaction.reply({ content: "You are already verified!", ephemeral: true })
                 }
             }
-            if (interaction.customId == "ticket-openn") {
+            if (interaction.customId == "ticket-open") {
                 if (interaction.guild.channels.cache.find(
                     (channel) => channel.topic === `${interaction.user.id}`
                 )) {
