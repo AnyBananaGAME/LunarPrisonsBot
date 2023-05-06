@@ -16,9 +16,10 @@ module.exports = {
 
     async execute(interaction, client) {
         const opt = interaction.options._hoistedOptions[0].value;
+        message = (opt).replaceAll("{nl}", "\n").replaceAll("{sp}", "      ")
         let AnnounceentEmbed = new EmbedBuilder()
             .setDescription(
-                `${(opt).replaceAll("{nl}", "\n").replaceAll("{sp}", "**    **")}`
+                `[<t:${Date.now()}:R>]\n${message}`
             )
             .setColor("Blurple")
 
