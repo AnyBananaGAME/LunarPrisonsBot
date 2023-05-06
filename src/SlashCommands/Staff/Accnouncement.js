@@ -8,7 +8,7 @@ module.exports = {
         .setDescription('Create an announcement')
         .setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
         .addStringOption((option) =>
-            option.setName('poll4')
+            option.setName('announcement')
                 .setDescription('Create an announcement')
                 .setMaxLength(620)
                 .setRequired(true)
