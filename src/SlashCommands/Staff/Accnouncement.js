@@ -19,7 +19,7 @@ module.exports = {
         message = (opt).replaceAll("{nl}", "\n").replaceAll("~", " ")
         let AnnounceentEmbed = new EmbedBuilder()
             .setDescription(
-                `[<t:${Date.now()/1000}:R>]\n${message}`
+                `[<t:${Math.floor(Date.now()/1000)}:R>]\n${message}`
             )
             .setColor("Blurple")
 
