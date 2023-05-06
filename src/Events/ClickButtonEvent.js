@@ -69,6 +69,7 @@ module.exports = {
 
             }
             if (interaction.customId == "ticket-close") {
+                await interaction.deferReply({ ephemeral: true }).catch((e) => console.log(e));
                 interaction.channel.permissionOverwrites.set([
                     {
                         id: interaction.user.id,
@@ -111,6 +112,7 @@ module.exports = {
                 interaction.channel.send({ embeds: [embed], components: [row] });
             }
             if (interaction.customId == "ticket-reopen") {
+                await interaction.deferReply({ ephemeral: true }).catch((e) => console.log(e));
                 let embed = new EmbedBuilder()
                     .setDescription("Ticket opened by " + interaction.user.username)
                     .setColor("Blurple")
