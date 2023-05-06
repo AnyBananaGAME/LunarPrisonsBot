@@ -16,7 +16,7 @@ module.exports = {
 
     async execute(interaction, client) {
         const opt = interaction.options._hoistedOptions[0].value;
-        message = (opt).replaceAll("{nl}", "\n").replaceAll("{sp}", "      ")
+        message = (opt).replaceAll("{nl}", "\n").replaceAll("~", " ")
         let AnnounceentEmbed = new EmbedBuilder()
             .setDescription(
                 `[<t:${Date.now()}:R>]\n${message}`
