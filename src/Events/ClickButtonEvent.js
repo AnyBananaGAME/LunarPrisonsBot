@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, ChannelType, PermissionsBitField, PermissionFlagsBits, ButtonBuilder, Embed, AttachmentBuilder } = require("discord.js");
 
 module.exports = {
     name: "interactionCreate",
@@ -26,23 +26,34 @@ module.exports = {
                     });
                 }
                 interaction.guild.channels
-                    .create(`ticket-${interaction.user.username}`, {
+                    .create({
+
                         permissionOverwrites: [
                             {
                                 id: interaction.user.id,
-                                allow: ["SEND_MESSAGES", "VIEW_CHANNEL"],
+                                allow: [PermissionFlagsBits.SendMessages, PermissionFlagsBits.ViewChannel],
                             },
                             {
                                 id: interaction.guild.roles.everyone,
-                                deny: ["VIEW_CHANNEL"],
+                                deny: [PermissionFlagsBits.ViewChannel],
                             },
+                            {
+                                id: "1040218657361494112",
+                                deny: [PermissionFlagsBits.ViewChannel],
+                            },
+                            {
+                                id: "1066632458700869652",
+                                allow: [PermissionFlagsBits.ViewChannel]
+                            }
                         ],
-                        topic: `${interaction.user.id}`,
+                        name: `ticket-${interaction.user.username}`,
+                        topic: `${interaction.member.id}`,
                         parent: `1100329060082655272`,
-                        type: "text",
+                        type: ChannelType.GuildText,
                     }).then(async (channel) => {
-                        interaction.reply(`Ticket created! ${channel}`);
+                        interaction.reply({ content: `Ticket created! ${channel}`, ephemeral: true });
                         let TicketEmbed = new EmbedBuilder()
+                            .setColor("Blurple")
                             .setDescription(`
                         Hello ${interaction.user}!\n\nWelcome to your ticket, and please be patient someone will be with you shortly!
                       `)
@@ -51,12 +62,74 @@ module.exports = {
                             .setLabel("Close the ticket")
                             .setStyle("Danger")
                         const row = new ActionRowBuilder().addComponents(button1)
-                        channel.send({ embeds: [TicketEmbed], components: [row] });
+
+                        channel.send({ content: "<@&1100404099888980059>", embeds: [TicketEmbed], components: [row] });
                     });
 
 
             }
+            if (interaction.customId == "ticket-close") {
+                let embed = new EmbedBuilder()
+                    .setDescription("Ticket closed by " + interaction.user.username)
+                    .setColor("Blurple")
 
+                let button1 = new ButtonBuilder()
+                    .setCustomId("ticket-delete")
+                    .setLabel("Delete the ticket")
+                    .setStyle("Danger")
+                const row = new ActionRowBuilder().addComponents(button1)
+                interaction.channel.permissionOverwrites.edit(interaction.channel.topic, PermissionFlagsBits.SendMessages)
+
+    
+                interaction.channel.send({ embeds: [embed], components: [row] });
+            }
+            if (interaction.customId == "ticket-delete") {
+                const sleep = ms => new Promise((resolve) => setTimeout(resolve, ms))
+                if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+                    return interaction.reply({ ephemeral: true, content: "You can not delete the ticket, only staff with Administrator permission can!!!" })
+                } else {
+                    let embed2 = new EmbedBuilder()
+                    .setDescription(`
+                    Ticket owner: \n
+                    > ping: ${client.users.cache.get(interaction.channel.topic)}\n
+                    > tag: ${client.users.cache.get(interaction.channel.topic).tag}\n
+                    > id: ${client.users.cache.get(interaction.channel.topic).id}\n
+                    Ticket deleted by ${interaction.user.username}
+                    Ticked deleted at <t:${Math.floor(Date.now()/1000)}:R>
+                    `)
+                    .setColor("Blurple")
+
+                    const discordTranscripts = require('discord-html-transcripts');
+                    const attachment = await discordTranscripts.createTranscript(interaction.channel, {
+                        poweredBy: false,
+                        filename: `${interaction.channel.name}.html`
+                    });
+                    let channel = client.channels.cache.get("1104403327162253442")
+                    channel.send({embeds: [embed2], files: [attachment]})
+                    interaction.member.send({embeds: [embed2],  files: [attachment] })
+
+
+                    interaction.channel.send("Deleting the ticket in 5");
+                    await sleep(1000)
+                    interaction.channel.send("Deleting the ticket in 4");
+                    await sleep(1000)
+                    interaction.channel.send("Deleting the ticket in 3");
+                    await sleep(1000)
+                    interaction.channel.send("Deleting the ticket in 2");
+                    await sleep(1000)
+                    interaction.channel.send("Deleting the ticket in 1");
+                    await sleep(1000)
+                    interaction.channel.delete()
+
+
+
+
+
+
+
+                }
+
+            }
 
 
 

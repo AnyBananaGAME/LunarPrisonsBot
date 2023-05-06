@@ -40,7 +40,7 @@ module.exports = {
         if (opt === "ticket") {
             let TicketEmbed = new EmbedBuilder()
                 .setDescription(
-                    "Hey there!\n\nIf you are here to create a ticket click the button below!\nWe will help you out :D\nDon't make false ticket's it may result in a blacklist"
+                    "If you have any concerns related to the server. Create a ticket, a staff member will be with you shortly."
                     )
                 .setColor("Blurple")
 
