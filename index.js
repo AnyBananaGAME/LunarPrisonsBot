@@ -21,7 +21,6 @@ const eventFiles = readdirSync("./src/Events").filter(file => file.endsWith('.js
 // const commandFolders = readdirSync("./src/Commands")
 const slashcommandFolders = readdirSync("./src/SlashCommands")
 
-
 client.commands = new Collection();
 client.slashcommands = new Collection();
 client.slashcommandsarr = new Collection();
