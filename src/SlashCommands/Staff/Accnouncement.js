@@ -22,7 +22,7 @@ module.exports = {
             )
             .setColor("Blurple")
 
-        interaction.channel.send({ embeds: [AnnounceentEmbed], components: [row] });
+        interaction.channel.send({ embeds: [AnnounceentEmbed]});
         interaction.reply({ content: "Embed succesfully sent!", ephemeral: true })
 
 
