@@ -2,16 +2,16 @@ const { SlashCommandBuilder, EmbedBuilder, Embed, Attachment, AttachmentBuilder 
 const config = require("../../Utils/config.json")
 const Canvas = require("canvas");
 const db = require("quick.db")
-
+const {QuickDB} = require("quick.db")
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('rank')
         .setDescription('Check ranks')
         .addUserOption(option =>
             option
-            .setName('target')
-            .setDescription('Chose a member to see their rank card')
-            .setRequired(false)
+                .setName('target')
+                .setDescription('Chose a member to see their rank card')
+                .setRequired(false)
         ),
     async execute(interaction, client) {
 
@@ -22,15 +22,27 @@ module.exports = {
         } else {
             member = interaction.user;
         }
-        let id = member.id;
-        let XP = db.fetch(`xp_${id}`);
-        if (XP === null) { XP = 0 }
-        let REQXP = db.fetch(`reqxp_${id}`);
-        if (REQXP === null) { REQXP = 50 }
-        let XPCD = db.fetch(`xpcd_${id}`);
-        if (XPCD === null) { XPCD = 0; }
-        let LEVEL = db.fetch(`level_${id}`);
-        if (LEVEL === null) { LEVEL = 1 }
+        const db = new QuickDB({ driver: client.mysqldriver });
+        const id = interaction.member.id;
+        const table = await db.tableAsync("user_" + id);
+
+        let TAG = await table.get(`tag_${id}`);
+        let XP = await table.get(`xp_${id}`);
+        let LEVEL = await table.get(`level_${id}`);
+        let REQXP = await table.get(`reqxp_${id}`);
+        if (TAG === null) {
+            await table.set(`tag_${id}`, message.author.tag)
+            await table.set(`xp_${id}`, 1)
+            await table.set(`reqxp_${id}`, 50)
+            await table.set(`xpcd_${id}`, 0)
+            await table.set(`level_${id}`, 1)
+
+            return;
+        }
+
+
+
+
 
         const canvas = Canvas.createCanvas(600, 250);
         const context = canvas.getContext("2d");
@@ -46,7 +58,7 @@ module.exports = {
 
         context.fillStyle = "#FFFFFF";
         context.font = '40px "Okinawa"';
-        context.fillText(`${XP} / ${Math.floor(REQXP)}  (${Math.floor((XP / REQXP) * 100) }%)`, 280, 200);
+        context.fillText(`${XP} / ${Math.floor(REQXP)}  (${Math.floor((XP / REQXP) * 100)}%)`, 280, 200);
 
 
         context.fillStyle = "#FFFFFF";
