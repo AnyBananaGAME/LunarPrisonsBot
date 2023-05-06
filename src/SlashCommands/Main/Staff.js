@@ -13,11 +13,11 @@ module.exports = {
         let StaffListEmbed = new EmbedBuilder()
             .setDescription(
                 `
-                **Founder**\n<Asia> <@352410328224628736>\n<Unknown> <@818460901027348480>\n\n
-                **Ownder**\n<Unknown> <@717493022442389776>\n\n
-                **Manager**\n<Unknown> <@457040919691264001>\n\n
-                **Admin**\n<Europe> <@599675959888707594>\n<Unknown> <@697416120487116900>\n\n
-                **Developer**\n<Unknown> <@825441181810425876>\n<Europe> <@599675959888707594>\n<Unknown> <@835927938833580073>\n\n
+                **Founder**\n<Asia> <@352410328224628736>\n<Unknown> <@818460901027348480>\n
+                **Ownder**\n<Unknown> <@717493022442389776>\n
+                **Manager**\n<Unknown> <@457040919691264001>\n
+                **Admin**\n<Europe> <@599675959888707594>\n<Unknown> <@697416120487116900>\n
+                **Developer**\n<Unknown> <@825441181810425876>\n<Europe> <@599675959888707594>\n<Unknown> <@835927938833580073>\n
                 **Moderator** \n\n
                 **Helper** <Unknown> <@454616357334417420> \n <Unknown> <@1088078767731245106>
                 
