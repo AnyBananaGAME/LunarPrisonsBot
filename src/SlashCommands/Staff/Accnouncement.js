@@ -18,7 +18,7 @@ module.exports = {
         const opt = interaction.options._hoistedOptions[0].value;
         let AnnounceentEmbed = new EmbedBuilder()
             .setDescription(
-                `${(opt).replaceAll("{nl}", "\n")}`
+                `${(opt).replaceAll("{nl}", "\n").replaceAll("{sp}", "   ")}`
             )
             .setColor("Blurple")
 
