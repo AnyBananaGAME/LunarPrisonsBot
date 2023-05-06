@@ -14,12 +14,12 @@ module.exports = {
             .setDescription(
                 `
                 **Founder**\n<Asia> <@352410328224628736>\n
-                **Ownder**\n<Asia> <@717493022442389776>\n
+                **Ownner**\n<Asia> <@717493022442389776>\n
                 **Manager**\n<Asia> <@457040919691264001>\n
                 **Admin**\n<Europe> <@599675959888707594>\n<Unknown> <@697416120487116900>\n
                 **Developer**\n<Asia> <@352410328224628736> \n<Europe> <@825441181810425876>\n<Europe> <@599675959888707594>\n<Unknown> <@835927938833580073>\n
                 **Moderator** \n\n
-                **Helper**\n <Unknown> <@454616357334417420> \n <Asia> <@1088078767731245106>
+                **Helper**\n <Europe> <@454616357334417420> \n <Asia> <@1088078767731245106>
                 
                 `
             )
