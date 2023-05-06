@@ -14,6 +14,9 @@ module.exports = {
             .addChoices({
                 name: 'Verification',
                 value: 'verification'
+            },{
+                name: "Tickets",
+                value: "ticket"
             })),
     async execute(interaction, client) {
         const opt = interaction.options._hoistedOptions[0].value;
