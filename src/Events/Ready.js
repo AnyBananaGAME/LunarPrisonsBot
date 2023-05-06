@@ -3,8 +3,8 @@ const { exec } = require("child_process");
 module.exports = {
     name: "ready",
     async execute(client) {
-        console.log("Ready!")
             (async () => {
+                console.log("Ready!")
                 setInterval(() => {
                     exec("git add ./json.sqlite", (error, stdout, stderr) => {
                         if (error) {
