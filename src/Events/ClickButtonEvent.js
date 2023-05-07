@@ -145,16 +145,14 @@ module.exports = {
 
 
             if (interaction.customId == "ticket-delete") {
+                      guild.members.fetch()
                 const sleep = ms => new Promise((resolve) => setTimeout(resolve, ms))
                 if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
                     return interaction.reply({ ephemeral: true, content: "You can not delete the ticket, only staff with Administrator permission can!!!" })
                 } else {
                     let embed2 = new EmbedBuilder()
                     .setDescription(`
-                    Ticket owner: \n
-                    > ping: ${client.users.cache.get(interaction.channel.topic)}\n
-                    > tag: ${client.users.cache.get(interaction.channel.topic).tag}\n
-                    > id: ${client.users.cache.get(interaction.channel.topic).id}\n
+                    Ticket owner ${interaction.guild.members.cache.get(interaction.channel.topic)}\n
                     Ticket deleted by ${interaction.user.username}
                     Ticked deleted at <t:${Math.floor(Date.now()/1000)}:R>
                     `)
