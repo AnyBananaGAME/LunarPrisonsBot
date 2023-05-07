@@ -1,5 +1,5 @@
 module.exports = {
-    name: "messageCreate",
+    name: "guildMemberAdd",
     async execute(member, client) {
         try {
 
