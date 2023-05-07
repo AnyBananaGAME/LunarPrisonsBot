@@ -11,7 +11,7 @@ module.exports = {
                 if (interaction.member.roles.cache.has("1100335742238085132")) {
                     interaction.member.roles.remove("1100335742238085132")
                     interaction.member.roles.add(roleID)
-                    interaction.member.roles.remove("1040218657361494112")
+                    interaction.member.roles.add("1040218657361494112")
 
                     interaction.reply({ content: "You have verified succesfully!", ephemeral: true })
                 } else {
