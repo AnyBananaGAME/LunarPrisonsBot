@@ -3,7 +3,7 @@ module.exports = {
     async execute(member, client) {
         try {
 
-            interaction.member.roles.add("1100335742238085132")
+        member.roles.add("1100335742238085132")
 
 
 
