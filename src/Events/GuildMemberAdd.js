@@ -4,10 +4,6 @@ module.exports = {
         try {
 
         member.roles.add("1100335742238085132")
-        console.log(member)
-
-
-
 
 
          }catch(e){
