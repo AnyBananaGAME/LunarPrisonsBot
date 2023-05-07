@@ -9,9 +9,9 @@ module.exports = {
             if (interaction.customId == "verify") {
                 let roleID = "1100347672591880202"
                 if (interaction.member.roles.cache.has("1100335742238085132")) {
-                    interaction.member.roles.remove("1100335742238085132")
-                    interaction.member.roles.add("1100347672591880202")
-                    interaction.member.roles.add("1040218657361494112")
+                    await interaction.member.roles.remove("1100335742238085132")
+                    await interaction.member.roles.add("1100347672591880202")
+                    await interaction.member.roles.add("1040218657361494112")
 
                     interaction.reply({ content: "You have verified succesfully!", ephemeral: true })
                 } else {
