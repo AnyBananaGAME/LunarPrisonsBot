@@ -132,7 +132,7 @@ module.exports = {
                         deny: [PermissionFlagsBits.ViewChannel],
                     },
                     {
-                        id: "1066632458700869652",
+                        id: "1100404099888980059",
                         allow: [PermissionFlagsBits.ViewChannel]
                     }
                 ])
