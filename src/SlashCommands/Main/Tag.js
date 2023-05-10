@@ -42,7 +42,7 @@ module.exports = {
 
             let emb = new EmbedBuilder()
                 .setColor("Blurple")
-                .setDescription(`Please make sure to vote as `+config.votelink)
+                .setDescription(`Please make sure to vote at `+config.votelink)
             interaction.reply({ content: member, embeds: [emb] })
         }
         if (opt === "store") {
